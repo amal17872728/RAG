@@ -27,3 +27,34 @@ Article:
     result = response.json()
 
     return result["response"]
+
+
+def answer_question(
+    question: str,
+    context: str
+):
+
+    prompt = f"""
+Use the context below to answer the question.
+
+Context:
+{context}
+
+Question:
+{question}
+
+Answer:
+"""
+
+    response = requests.post(
+        OLLAMA_URL,
+        json={
+            "model": "qwen2.5:3b",
+            "prompt": prompt,
+            "stream": False
+        }
+    )
+
+    response.raise_for_status()
+
+    return response.json()["response"]
