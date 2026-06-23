@@ -1,5 +1,4 @@
 from qdrant_client import QdrantClient
-import os
 from qdrant_client.models import (
     Distance,
     VectorParams,
@@ -8,13 +7,14 @@ from qdrant_client.models import (
     FieldCondition,
     MatchValue,
 )
+from app.core.config import settings
 
 client = QdrantClient(
-    host=os.getenv("QDRANT_HOST", "localhost"),
-    port=int(os.getenv("QDRANT_PORT", "6333")),
+    host=settings.qdrant_host,
+    port=settings.qdrant_port,
 )
 
-COLLECTION_NAME = "wikipedia_articles"
+COLLECTION_NAME = settings.qdrant_collection
 
 
 def create_collection(vector_size: int):

@@ -6,11 +6,9 @@ import hashlib
 import asyncio
 import httpx
 
-OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
-EMBED_MODEL = os.getenv("EMBED_MODEL", "nomic-embed-text")
-EMBED_CACHE_DIR = os.getenv("EMBED_CACHE_DIR", "/tmp/emb_cache")
+from app.core.config import settings
 
-os.makedirs(EMBED_CACHE_DIR, exist_ok=True)
+os.makedirs(settings.embed_cache_dir, exist_ok=True)
 
 
 def _hash_text(text: str) -> str:
@@ -18,7 +16,7 @@ def _hash_text(text: str) -> str:
 
 
 def _cache_path(key: str) -> str:
-    return os.path.join(EMBED_CACHE_DIR, f"{key}.json")
+    return os.path.join(settings.embed_cache_dir, f"{key}.json")
 
 
 def _load_cache(key: str):
@@ -41,9 +39,9 @@ def _write_cache(key: str, embedding):
 def generate_embedding(text: str):
     """Synchronous single embedding (kept for backwards compatibility)."""
     response = requests.post(
-        f"{OLLAMA_BASE_URL}/api/embeddings",
+        f"{settings.ollama_base_url}/api/embeddings",
         json={
-            "model": EMBED_MODEL,
+            "model": settings.embed_model,
             "prompt": text
         },
         timeout=120,
@@ -56,8 +54,8 @@ def generate_embedding(text: str):
 
 async def _embed_single(client: httpx.AsyncClient, text: str):
     resp = await client.post(
-        f"{OLLAMA_BASE_URL}/api/embeddings",
-        json={"model": EMBED_MODEL, "prompt": text},
+        f"{settings.ollama_base_url}/api/embeddings",
+        json={"model": settings.embed_model, "prompt": text},
         timeout=120.0,
     )
     resp.raise_for_status()

@@ -10,7 +10,8 @@ def test_real_stack_root_and_ollama():
     assert requests.get("http://localhost:8000/", timeout=5).status_code == 200
     tags = requests.get("http://localhost:11434/api/tags", timeout=5)
     tags.raise_for_status()
-    assert any(model["name"].startswith("qwen2.5:3b") for model in tags.json()["models"])
+    chat_model = os.getenv("CHAT_MODEL", "qwen2.5:3b")
+    assert any(model["name"].startswith(chat_model) for model in tags.json()["models"])
 
     article_url = "https://en.wikipedia.org/wiki/Muhammad_Ali_Jinnah"
     ingestion = requests.post(

@@ -1,8 +1,6 @@
 import requests
-import os
 
-OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
-CHAT_MODEL = os.getenv("CHAT_MODEL", "qwen2.5:3b")
+from app.core.config import settings
 
 
 def summarize_article(article_text: str) -> str:
@@ -14,9 +12,9 @@ Article:
 """
 
     response = requests.post(
-        f"{OLLAMA_BASE_URL}/api/generate",
+        f"{settings.ollama_base_url}/api/generate",
         json={
-            "model": CHAT_MODEL,
+            "model": settings.chat_model,
             "prompt": prompt,
             "stream": False
         },
@@ -51,9 +49,9 @@ Answer:
 """
 
     response = requests.post(
-        f"{OLLAMA_BASE_URL}/api/generate",
+        f"{settings.ollama_base_url}/api/generate",
         json={
-            "model": CHAT_MODEL,
+            "model": settings.chat_model,
             "prompt": prompt,
             "stream": False
         },
