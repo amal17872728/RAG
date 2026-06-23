@@ -1,0 +1,8 @@
+body { font-family: Arial, sans-serif; background:#f5f7fb; }
+.container { max-width:900px; margin:40px auto; padding:20px; }
+.card { background:white; padding:16px; margin-bottom:16px; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.06); }
+input { width:100%; padding:8px; margin:8px 0; box-sizing:border-box; }
+button { padding:8px 12px; }
+.result { margin-top:12px; background:#fafafa; padding:12px; border-radius:6px; }
+.error { color:#fff; background:#c0392b; padding:8px; border-radius:6px; }
+pre { white-space:pre-wrap; }

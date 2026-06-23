@@ -3,6 +3,11 @@ def chunk_text(
     chunk_size: int = 1000,
     overlap: int = 200
 ) -> list[str]:
+    if chunk_size <= 0 or overlap < 0 or overlap >= chunk_size:
+        raise ValueError("chunk_size must be positive and overlap must be smaller")
+
+    if not text.strip():
+        return []
 
     chunks = []
 
