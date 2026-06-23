@@ -1,7 +1,5 @@
 # DESIGN.md
 
-# Design
-
 ## Overview
 
 This application implements a Retrieval-Augmented Generation (RAG) workflow over Wikipedia articles.
@@ -13,10 +11,9 @@ The design prioritizes simplicity, modularity, testability, and local-first AI i
 ---
 
 ## Architecture
-<img width="1408" height="768" alt="Gemini_Generated_Image_bl2e16bl2e16bl2e" src="https://github.com/user-attachments/assets/35ca56d9-2576-4c1b-b601-21c367195d4c" />
 
+<img width="1536" height="1024" alt="ChatGPT Image Jun 23, 2026, 06_21_06 AM" src="https://github.com/user-attachments/assets/fcd93206-e202-4926-bf7f-2e9383c0033a" />
 
-![Architecture Diagram](design-diagram.png)
 
 ### Components
 
