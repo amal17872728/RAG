@@ -1,6 +1,8 @@
 # Design
 
 ## Architecture
+<img width="1408" height="768" alt="Gemini_Generated_Image_bl2e16bl2e16bl2e" src="https://github.com/user-attachments/assets/35ca56d9-2576-4c1b-b601-21c367195d4c" />
+
 
 # Design
 
