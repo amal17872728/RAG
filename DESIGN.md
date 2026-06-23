@@ -113,6 +113,6 @@ RUN_INTEGRATION=1
 
 The project exceeds the required coverage threshold and includes a generated coverage report in the repository.
 
-<img width="1470" height="507" alt="Screenshot 2026-06-23 at 11 53 01 AM" src="https://github.com/user-attachments/assets/9b6520da-d151-4343-b65f-5dea5d9ee45e" />
+<img width="543" height="237" alt="Screenshot 2026-06-24 at 12 39 05 AM" src="https://github.com/user-attachments/assets/954460a6-a0bb-4dcf-89d4-0f4a16cd55de" />
 
 ---
