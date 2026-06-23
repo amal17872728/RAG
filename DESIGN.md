@@ -113,4 +113,6 @@ RUN_INTEGRATION=1
 
 The project exceeds the required coverage threshold and includes a generated coverage report in the repository.
 
+<img width="1470" height="507" alt="coverage" src="https://github.com/user-attachments/assets/4c9a443a-3e0d-4c9d-b06c-568ce1339e32" />
+
 ---
