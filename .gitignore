@@ -2,6 +2,28 @@ backend/venv/
 __pycache__/
 .pytest_cache/
 .coverage
+backend/coverage_html/
 .env
 node_modules/
 .DS_Store
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.env
+.env.*
+.coverage
+coverage.xml
+coverage.json
+htmlcov/
+htmlcov_fresh/
+
+# Node
+node_modules/
+dist/
+build/
+
+# Editor / OS
+.DS_Store
+*.swp
+
