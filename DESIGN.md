@@ -111,7 +111,7 @@ An optional integration test exercises the complete stack using Docker Compose a
 RUN_INTEGRATION=1
 ```
 
-The project exceeds the required coverage threshold and includes a generated coverage report in the repository.
+Current backend line coverage is 90.42%, above the required 85%. The committed XML report is available at `backend/coverage.xml`.
 
 <img width="543" height="237" alt="Screenshot 2026-06-24 at 12 39 05 AM" src="https://github.com/user-attachments/assets/954460a6-a0bb-4dcf-89d4-0f4a16cd55de" />
 

@@ -27,6 +27,7 @@ OLLAMA_PORT=11434
 BACKEND_PORT=8000
 FRONTEND_PORT=3000
 EMBED_CACHE_DIR=/tmp/emb_cache
+CORS_ORIGINS=http://localhost:3000,http://127.0.0.1:3000,http://localhost:5173,http://127.0.0.1:5173
 ```
 
 The `.env` file is ignored by git. Model names, ports, collection name, and cache path can be changed there without editing application code.
@@ -90,5 +91,6 @@ Add the final app demo recording or screenshot link here before submission:
 
 - Runtime LLM calls and embeddings use local Ollama, not hosted inference APIs.
 - Qdrant stores chunk vectors and metadata in the `qdrant_data` Docker volume.
+- The frontend is built with Vite and served with `vite preview` in the container; it calls the FastAPI backend directly through `VITE_API_BASE`.
 - Ingestion is synchronous for this take-home scope. For larger documents, the next production step would be a background job queue with job status/progress tracking.
 - See `REQUIREMENTS.md`, `DESIGN.md`, `TASKS.md`, and `NOTES.md` for planning details and trade-offs.

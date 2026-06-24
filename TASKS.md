@@ -52,13 +52,13 @@ The initial planning artifacts were drafted with an AI coding agent and then rev
 - [x] Exercise FastAPI ingestion and grounded-answer orchestration.
 - [x] Add an opt-in integration test for the live Compose stack.
 - [x] Enforce at least 85% coverage with pytest.
-- [x] Regenerate and commit `backend/coverage.xml` showing 90.51% line coverage.
+- [x] Regenerate and commit `backend/coverage.xml` showing 90.42% line coverage.
 
 ## 6. Containerisation and Developer Experience
 
 - [x] Add backend Dockerfile.
 - [x] Add multi-stage frontend Dockerfile.
-- [x] Add Nginx SPA/API proxy configuration.
+- [x] Serve the built Vite frontend with `vite preview` in the frontend container.
 - [x] Compose Qdrant, Ollama, model pull, API, and UI.
 - [x] Add `.env.example`, `.gitignore` rules, and central backend settings.
 - [x] Add README setup, run, test, caveat, and demo-evidence instructions.

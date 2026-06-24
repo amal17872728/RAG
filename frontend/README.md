@@ -4,6 +4,6 @@ Quick start:
 
 1. cd frontend
 2. npm install
-3. npm run dev
+3. VITE_API_BASE=http://localhost:8000 npm run dev
 
-The frontend expects the backend to be running at http://localhost:8000
+The Docker image builds the app with `VITE_API_BASE=http://localhost:${BACKEND_PORT}` and serves the production build with `vite preview`.

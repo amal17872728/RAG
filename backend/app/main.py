@@ -4,6 +4,7 @@ from app.api.article import router as article_router
 from app.api.summary import router as summary_router
 from app.api.ask import router as ask_router
 from app.api.ingest import router as ingest_router
+from app.core.config import settings
 
 app = FastAPI(
     title="Wikipedia RAG API",
@@ -12,10 +13,7 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-    ],
+    allow_origins=settings.cors_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
