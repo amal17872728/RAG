@@ -30,3 +30,18 @@ def test_answer_question_includes_context(monkeypatch):
     assert llm.answer_question("question?", "ground truth") == "answer"
     prompt = post.call_args.kwargs["json"]["prompt"]
     assert "question?" in prompt and "ground truth" in prompt
+
+
+def test_repair_citations_uses_direct_repair_prompt(monkeypatch):
+    post = Mock(return_value=response_with({"response": "answer [1]"}))
+    monkeypatch.setattr(llm.requests, "post", post)
+
+    assert llm.repair_citations("question?", "draft answer", "[1] source") == "answer [1]"
+
+    prompt = post.call_args.kwargs["json"]["prompt"]
+    assert "You are repairing citation formatting." in prompt
+    assert "Repaired answer:" in prompt
+    assert "Answer the question using only the context below." not in prompt
+    assert "question?" in prompt
+    assert "draft answer" in prompt
+    assert "[1] source" in prompt

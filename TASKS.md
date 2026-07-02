@@ -43,6 +43,25 @@ The initial planning artifacts were drafted with an AI coding agent and then rev
 - [x] Add async batched embeddings with disk cache and safe fallback.
 - [x] Validate chunk settings and ask query/top-k inputs.
 - [x] Return `404` instead of invoking the LLM when retrieval has no evidence.
+- [x] Make summary generation non-fatal after successful chunk storage, so Ollama summary timeouts do not fail ingestion.
+- [x] Move ingestion behind a FastAPI `BackgroundTasks` job with in-memory status tracking.
+- [x] Add `/ingest/status/{job_id}` so the frontend can poll ingestion progress.
+- [x] Add inline citation IDs to retrieved chunks in `/ask`.
+- [x] Update the answer prompt so the model cites only retrieved chunk IDs.
+- [x] Parse model citation markers and report hallucinated/unsupported citation numbers.
+- [x] Detect answers that omit inline citations and surface a warning.
+- [x] Show cited source chunks and unsupported citation warnings in the frontend.
+- [x] Add clickable inline citation buttons that expand the matching source chunk.
+- [x] Retry answer generation once when the model omits or invents citations.
+- [x] Strip Wikipedia footnote markers from LLM context so they are not mistaken for app citations.
+- [x] Add multi-query rewriting before retrieval with original-query fallback.
+- [x] Cache rewritten queries in memory to avoid repeated Ollama rewrite calls.
+- [x] Fan out retrieval across rewritten queries and deduplicate retrieved chunks.
+- [x] Skip rewriting for clear standalone questions to reduce local Ollama latency.
+- [x] Add `/ask/stream` SSE endpoint for token-level answer streaming.
+- [x] Stream partial answers in the frontend while preserving final citation metadata.
+- [x] Return a clean `/ask` timeout error when Ollama answer generation is too slow.
+- [x] Disable asking while ingestion is running to avoid competing Ollama requests.
 
 ## 5. Tests and Coverage
 
@@ -50,9 +69,18 @@ The initial planning artifacts were drafted with an AI coding agent and then rev
 - [x] Mock Wikipedia/Ollama HTTP boundaries in unit tests.
 - [x] Mock Qdrant collection, duplicate, upsert, and query behavior.
 - [x] Exercise FastAPI ingestion and grounded-answer orchestration.
+- [x] Test that summary timeout/failure still returns successful ingestion with `summary_status="failed"`.
+- [x] Test ingestion job creation, status lookup, completion, failure, and summary-failure completion.
+- [x] Test valid citation handling and hallucinated citation detection.
+- [x] Test missing inline citation detection.
+- [x] Test citation retry when the first model answer has no citation markers.
+- [x] Test that Wikipedia reference markers are removed before answer generation.
+- [x] Test query-rewrite fan-out, deduplication, fallback, and cache behavior.
+- [x] Test that clear standalone questions skip rewriting while vague follow-ups still rewrite.
+- [x] Test streaming token events, final citation metadata, and stream error events.
 - [x] Add an opt-in integration test for the live Compose stack.
 - [x] Enforce at least 85% coverage with pytest.
-- [x] Regenerate and commit `backend/coverage.xml` showing 90.42% line coverage.
+- [x] Regenerate and commit `backend/coverage.xml` showing 93.84% line coverage.
 
 ## 6. Containerisation and Developer Experience
 

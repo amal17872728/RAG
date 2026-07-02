@@ -8,6 +8,8 @@ services:
 
   ollama:
     image: ollama/ollama:latest
+    profiles:
+      - docker-ollama
     ports:
       - "${OLLAMA_PORT}:11434"
     volumes:
@@ -15,6 +17,8 @@ services:
 
   ollama-pull:
     image: ollama/ollama:latest
+    profiles:
+      - docker-ollama
     depends_on:
       - ollama
     env_file:
@@ -35,12 +39,9 @@ services:
     depends_on:
       qdrant:
         condition: service_started
-      ollama-pull:
-        condition: service_completed_successfully
     environment:
       QDRANT_HOST: qdrant
       QDRANT_PORT: 6333
-      OLLAMA_BASE_URL: http://ollama:11434
     ports:
       - "${BACKEND_PORT}:8000"
 

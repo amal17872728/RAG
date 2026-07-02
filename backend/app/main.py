@@ -30,3 +30,11 @@ def root():
     return {
         "message": "Wikipedia RAG API is running"
     }
+
+
+@app.get("/config")
+def public_config():
+    return {
+        "enable_streaming": settings.enable_streaming,
+        "enable_background_ingestion": settings.enable_background_ingestion,
+    }

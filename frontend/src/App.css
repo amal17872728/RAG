@@ -5,4 +5,31 @@ input { width:100%; padding:8px; margin:8px 0; box-sizing:border-box; }
 button { padding:8px 12px; }
 .result { margin-top:12px; background:#fafafa; padding:12px; border-radius:6px; }
 .error { color:#fff; background:#c0392b; padding:8px; border-radius:6px; }
+.warning { color:#7a4b00; background:#fff3cd; padding:8px; border-radius:6px; margin:8px 0; }
+.notice { color:#16456b; background:#e8f4ff; padding:8px; border-radius:6px; margin:8px 0; }
 pre { white-space:pre-wrap; }
+.citation {
+  border:0;
+  background:#dbeafe;
+  color:#1d4ed8;
+  padding:1px 4px;
+  margin:0 1px;
+  border-radius:4px;
+  cursor:pointer;
+}
+.bad-citation {
+  color:#b91c1c;
+  font-weight:bold;
+}
+.sources {
+  padding-left:18px;
+}
+.sources li {
+  margin:8px 0;
+}
+.sources summary {
+  cursor:pointer;
+}
+.sources p {
+  margin:8px 0;
+}
